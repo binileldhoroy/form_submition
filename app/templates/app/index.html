@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    
+    <div id = 'root'>
+        <form method="POST" action="" id="form" >
+            {% csrf_token %}
+            <input type="text" name="master" placeholder="Enter master string">
+            <div class="row">
+                <input type="text" class="sub" name="one" placeholder="Enter the string">
+                <input type="text" class="sub" name="two" placeholder="Enter the string">
+            </div>
+            <div class="row">
+                <input type="text" class="sub" name="three" placeholder="Enter the string">
+                <input type="text" class="sub" name="four" placeholder="Enter the string">
+            </div>
+            <input class="btn btn-info" type="submit" name="Create Task">
+        </form>
+    </div>
+
+    <div class="answer">
+        <div>
+            {% if results %}
+            <div class="answer">
+                <h3>Results</h3>
+            </div>
+            {% for result in results %}
+            <div class="row">
+                <input type="text" class="sub" value="{{ result.name }}" >
+                <input type="text" class="sub"  value="{{ result.value}}" >
+            </div>
+            {% endfor %}
+
+            {% endif %}
+        </div>
+    </div>
+    </body>
+</html>
