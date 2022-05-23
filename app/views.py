@@ -12,6 +12,7 @@ def index(request):
         three = request.POST.get('three')
         four = request.POST.get('four')
 
+        masterString = master
         res = []
         
         strings = [one, two, three, four]
@@ -29,5 +30,5 @@ def index(request):
                 master = masterCopy
             else:
                 res.append({'name': string, 'value': 'no'})
-        context = {'result': res}
+        context = {'results': res,'master':masterString}
     return render(request, 'app/index.html',context)
